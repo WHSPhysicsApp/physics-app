@@ -2,7 +2,6 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Link } from 'react-router-native'
 import Header from './Header.js'
-import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default class Home extends React.Component {
   render() {
