@@ -1,15 +1,20 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { Link } from 'react-router-native'
 import Header from './Header.js'
-import Footer from './Footer.js'
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default class Home extends React.Component {
   render() {
     return (
       <View style={styles.container}>
         <Header title="Home"/>
-        <Text>Hello, I'm a home page!</Text>
-        <Footer/>
+        <Text style={styles.basicText}>Hello, I'm a home page.</Text>
+        <Link to="/topic">
+          <View>
+              <Text style={styles.basicText}>Click here for topic</Text>
+          </View>
+        </Link>
       </View>
     );
   }
@@ -17,9 +22,9 @@ export default class Home extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flex: 1
+  },
+  basicText: {
+    fontSize: 40
   }
 });

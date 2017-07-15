@@ -1,21 +1,51 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, View, TouchableHighlight } from 'react-native';
+import NavigationBar from 'react-native-navbar';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
-export default class Header extends React.Component {
+import history from '../utils/history.js';
+
+export default class Header extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Header</Text>
+      <View>
+        {
+          /*
+          rightButton={
+            history.index + 1 < history.length ?
+            <TouchableHighlight underlayColor="#999" style={{paddingLeft:20,paddingRight:20}} onPress={history.goForward}>
+              <Icon name="angle-right" size={36} color="#000" style={{paddingTop:5}}/>
+            </TouchableHighlight> : <View></View>
+          }
+          */
+        }
+        {
+        <NavigationBar
+          containerStyle={styles.navbar}
+          title={{
+            title: this.props.title,
+            style: styles.titleText
+          }}
+          leftButton={
+            history.index > 0 ?
+            <TouchableHighlight underlayColor="#999" style={{paddingLeft:20,paddingRight:20}} onPress={history.goBack}>
+              <Icon name="angle-left" size={36} color="#000" style={{paddingTop:5}}/>
+            </TouchableHighlight> : <View></View>
+          }
+        />
+      }
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  navbar: {
+    backgroundColor: '#ffffff',
+    paddingTop: 10,
+    paddingBottom: 20
+  },
+  titleText: {
+    fontSize: 28
   }
 });
